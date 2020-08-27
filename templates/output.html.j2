@@ -1,0 +1,40 @@
+<html>
+    <body>
+        <table>
+            <TR>
+            <TH>host</TH><TH>dns ip</TH><TH>uptime</TH><TH>rsa public key</TH><TH>cockpit</TH>
+            </TR>
+
+            <TR><TH span="5">dbservers</TH></TR>
+{% for host in groups['dbservers'] -%}
+              <TR>
+                <TD class="c1"> {{ hostvars[host]['ansible_fqdn'] }} </TD>
+                <TD class="c2"> {{ hostvars[host]['ansible_default_ipv4']['address'] }} </TD>
+                <TD class="c3"> {{ hostvars[host]['ansible_uptime_seconds'] / 3600 | int }}h </TD>
+                <TD class="c5"> <a href="https://{{ hostvars[host]['ansible_fqdn'] }}:2224" target="_blank">Pacemaker</a> </TD>
+                <TD class="c5"> <a href="https://{{ hostvars[host]['ansible_fqdn'] }}:9090" target="_blank">Cockpit</a> </TD>
+              </TR>
+{% endfor %}
+            <TR><TH span="5">appservers</TH></TR>
+{% for host in groups['appservers'] -%}
+            <TR>
+                <TD class="c1"> {{ hostvars[host]['ansible_fqdn'] }} </TD>
+                <TD class="c2"> {{ hostvars[host]['ansible_default_ipv4']['address'] }} </TD>
+                <TD class="c3"> {{ hostvars[host]['ansible_uptime_seconds'] / 3600 | int }}h </TD>
+                <TD class="c5"> <a href="https://{{ hostvars[host]['ansible_fqdn'] }}:10051" target="_blank">Zabbix Server</a> </TD>
+                <TD class="c5"> <a href="https://{{ hostvars[host]['ansible_fqdn'] }}:9090" target="_blank">Cockpit</a> </TD>
+            </TR>
+{% endfor %}
+            <TR><TH span="5">webservers</TH></TR>
+{% for host in groups['webservers'] -%}
+            <TR>
+                <TD class="c1"> {{ hostvars[host]['ansible_fqdn'] }} </TD>
+                <TD class="c2"> {{ hostvars[host]['ansible_default_ipv4']['address'] }} </TD>
+                <TD class="c3"> {{ hostvars[host]['ansible_uptime_seconds'] / 3600 | int }}h </TD>
+                <TD class="c5"> <a href="http://{{ hostvars[host]['ansible_fqdn'] }}/zabbix/" target="_blank">Zabbix</a> </TD>
+                <TD class="c5"> <a href="https://{{ hostvars[host]['ansible_fqdn'] }}:9090" target="_blank">Cockpit</a> </TD>
+            </TR>
+{% endfor %}
+        </table>
+    </body>
+</html>

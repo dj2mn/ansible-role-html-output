@@ -1,0 +1,5 @@
+---
+# defaults file for ansible-role-html-output
+output_path: '~'
+output_filename: 'ansible_batch_{{ ansible_date_time.date }}-{{ ansible_date_time.epoch }}.html'
+output_host: localhost

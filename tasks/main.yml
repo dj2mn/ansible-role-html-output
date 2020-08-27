@@ -1,0 +1,13 @@
+---
+# tasks file for ansible-role-html-output
+- name: generate html file
+  template:
+    src: output.html.j2
+    dest: "{{ output_path }}/{{ output_filename }}"
+  delegate_to: 'localhost'
+  run_once: true
+
+- name: opening the file
+  command: open "{{ output_path }}/{{ output_filename }}"
+  delegate_to: 'localhost'
+  run_once: true
