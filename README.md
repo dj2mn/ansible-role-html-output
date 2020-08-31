@@ -1,7 +1,7 @@
-Role Name
+HTML Output
 =========
 
-A brief description of the role goes here.
+This role generates an .html file on the ansible workstation containing information about, and links to services running on, hosts in the current ansible play.
 
 Requirements
 ------------
@@ -30,9 +30,9 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+@dj2mn wrote this.
